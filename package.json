@@ -1,0 +1,33 @@
+{
+  "name": "ironweby-api",
+  "version": "1.0.0",
+  "description": "A full-featured iron-clad RESTful API built with Node.js, Express, and MongoDB, and secured with JWT authentication.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file=.env index.js",
+    "dev": "node --watch --trace-warnings --env-file=.env index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LabGich/ironweby-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LabGich/ironweby-api/issues"
+  },
+  "homepage": "https://github.com/LabGich/ironweby-api#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.3"
+  }
+}
