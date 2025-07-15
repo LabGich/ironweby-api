@@ -4,6 +4,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
+const authRoutes = require("./routers/auth-routes")
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(
     extended: true,
   })
 );
+app.use("/api", authRoutes)
 
 mongoose
   .connect(process.env.MONGO_URI)
