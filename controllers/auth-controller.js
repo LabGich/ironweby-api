@@ -55,7 +55,7 @@ const signin = async (req, res) => {
     const user = await User.findOne({ email }).select("+password");
 
     if (!user) {
-      return res.status(401).json({
+      return res.status(404).json({
         success: false,
         message: "User does not exist!",
       });
@@ -95,4 +95,36 @@ const signin = async (req, res) => {
   }
 };
 
-module.exports = { signup, signin };
+const signout = async(req, res) => {
+  res.clearCookie("Authorization").status(200).json({
+    success: true,
+    message: "Logged out successfully!"
+  })
+}
+
+const sendVerificationCode = async(req, res) => {
+  const {email} = req.body
+
+  try {
+    const {user} = await User.findOne({email})
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User does not exist!",
+      });
+    }
+    if (user.verified) {
+      return res.status(400).json({
+        success: false,
+        message: "You are already verified!",
+      });
+    }
+
+    const codeValue = Math.floor(Math.random() * 1000000).toString()
+  } catch (e) {
+    console.log(e);
+    
+  }
+}
+
+module.exports = { signup, signin, signout, sendVerificationCode };
