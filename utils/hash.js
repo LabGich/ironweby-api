@@ -1,8 +1,13 @@
-const {hash} = require("bcryptjs")
+const {hash, compare} = require("bcryptjs")
 
 const doHash = (value, saltValue) => {
     const result = hash(value, saltValue)
     return result
 }
 
-module.exports = doHash
+const doHashValidation = (value, hashedValue) => {
+    const result = compare(value, hashedValue)
+    return result
+}
+
+module.exports = {doHash, doHashValidation}
